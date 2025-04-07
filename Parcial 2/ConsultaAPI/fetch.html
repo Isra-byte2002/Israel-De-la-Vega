@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo XMLHttpRequest</title>
+</head>
+<body>
+    <h1>Consulta con XMLHttpRequest</h1>
+    <button onclick="hacerPeticion()">Obtener Datos</button>
+    <br>
+    <br>
+    <img id="imagen" alt="Imagen" width="300">
+    <p id="resultado"></p>
+
+    <script>
+        function hacerPeticion() {
+            var peticion = new XMLHttpRequest();
+            peticion.open('GET', 'https://randomfox.ca/floof/', true);
+            peticion.responseType = 'json';
+            
+            peticion.onload = function () {
+                if (peticion.status === 200) {
+                    var respuesta = peticion.response;
+                    document.getElementById('imagen').src = respuesta.image;
+                }
+            };
+
+            peticion.send();
+        }
+    </script>
+</body>
+</html>
