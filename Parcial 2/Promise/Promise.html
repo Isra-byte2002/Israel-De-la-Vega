@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Event Loop</title>
+</head>
+<body>
+
+    <h2>Abrir consola</h2>
+    
+    <script>
+        console.log("1️⃣ Síncrono: Inicio del script");
+
+        setTimeout(() => {
+            console.log("4️⃣ setTimeout: Se ejecuta después de 0ms");
+        }, 0);
+
+        Promise.resolve().then(() => {
+            console.log("3️⃣ Promise: Se ejecuta en la cola de microtareas");
+        });
+
+        console.log("2️⃣ Síncrono: Fin del script");
+    </script>
+
+</body>
+</html>
