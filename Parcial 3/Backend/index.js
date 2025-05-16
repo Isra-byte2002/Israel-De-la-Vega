@@ -1,16 +1,20 @@
 const express = require('express');
 const app = express();
+var morgan = require('morgan');
+const cors = require('cors');
 
 app.use( express.json());
-app.use( express.text());
+app.use(morgan('combined'));
+app.use(cors());
+app.use(express.urlencoded({extended:true,}))
 
 app.get('/peliculas', (req, res)=>{
-    console.log(req.query)
     console.log(req.query.id)
-    res.send("Servidor Express contesteando a una peticion get");
+    res.send("Servidor Express contestando a una peticion get");
 });
 
 app.post('/peliculas/:id', (req, res)=>{
+    console.log(req.body);
     res.send("Servidor Express contestando a post");
 });
 
